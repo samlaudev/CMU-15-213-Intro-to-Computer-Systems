@@ -251,7 +251,7 @@ int subOK(int x, int y) {
   /* Compare the signs of x, y and z 
    * If +-- or -++ then overflows
    */
-  int z = x - y;
+  int z = x + (~y + 1);
   int mask = 1 << 31;
   return !(((x & mask) ^ (y & mask)) & ((x & mask) ^ (z & mask)));
 }
@@ -323,25 +323,25 @@ int howManyBits(int x) {
   maybe_zero |= maybe_zero << 8;
   result += maybe_zero & 16;
 
-  maybe_zero = x >> (24 - result);
+  maybe_zero = x >> (24 + (~result + 1));
   maybe_zero = !maybe_zero;
   maybe_zero |= maybe_zero << 1;
   maybe_zero |= maybe_zero << 2;
   maybe_zero |= maybe_zero << 4;
   result += maybe_zero & 8;
 
-  maybe_zero = x >> (28 - result);
+  maybe_zero = x >> (28 + (~result + 1));
   maybe_zero = !maybe_zero;
   maybe_zero |= maybe_zero << 1;
   maybe_zero |= maybe_zero << 2;
   result += maybe_zero & 4;
 
-  maybe_zero = x >> (30 - result);
+  maybe_zero = x >> (30 + (~result + 1));
   maybe_zero = !maybe_zero;
   maybe_zero |= maybe_zero << 1;
   result += maybe_zero & 2;
 
-  maybe_zero = x >> (31 - result);
+  maybe_zero = x >> (31 + (~result + 1));
   maybe_zero = !maybe_zero;
   result += maybe_zero & 1;
 
@@ -359,7 +359,7 @@ int howManyBits(int x) {
   is_zero |= is_zero << 8;
   is_zero |= is_zero << 16;
 
-  return ((32 - result) & ~first_zero & ~is_zero) | 
+  return ((32 + (~result + 1)) & ~first_zero & ~is_zero) | 
           (32 & first_zero & ~is_zero) | (is_zero & 1);
 }
 //float
