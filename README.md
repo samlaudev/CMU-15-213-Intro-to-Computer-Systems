@@ -14,7 +14,7 @@ Notes and labs for the course 15-213 Introduction to Computer Systems at CMU
 
 
 # IEEE 754
-* Numeric form: $(-1)^s M 2^E$
+* Numeric form: (-1)^s\*M\*(2^E)
 * Encoding
     * s: sign bit
     * exp: E
