@@ -11,8 +11,11 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - libc6-dev-i386
+      - g++-multilib
 
 script:
+  - ln -s /usr/include/asm-generic /usr/include/asm
+  - export LDFLAGS='-m32 -L/usr/lib32'
   - make -C LAB0_cprogramminglab
   - make -C LAB1_datalab
   - make -C LAB4_cachelab
