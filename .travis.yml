@@ -1,0 +1,24 @@
+dist: trusty
+
+language:
+  - c
+compiler:
+  - gcc
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - libc6-dev-i386
+      - gcc-6
+      - g++-6
+
+script:
+  - export CC=/usr/bin/gcc-6
+  - make -C LAB0_cprogramminglab
+  - make -C LAB1_datalab
+  - make -C LAB4_cachelab
+  - make -C LAB5_tshlab
+  - make -C LAB6_malloclab
+  - make -C LAB7_proxylab
