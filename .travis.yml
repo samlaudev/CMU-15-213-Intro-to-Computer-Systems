@@ -14,7 +14,6 @@ addons:
       - g++-multilib
 
 script:
-  - ln -s /usr/include/asm-generic /usr/include/asm
   - export LDFLAGS='-m32 -L/usr/lib32'
   - make -C LAB0_cprogramminglab
   - make -C LAB1_datalab
