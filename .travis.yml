@@ -11,11 +11,8 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - libc6-dev-i386
-      - gcc-6
-      - g++-6
 
 script:
-  - export CC=/usr/bin/gcc-6
   - make -C LAB0_cprogramminglab
   - make -C LAB1_datalab
   - make -C LAB4_cachelab
