@@ -43,10 +43,6 @@ void q_free(queue_t *q)
         free(cur);
     }
     free(q);
-    q -> tail = NULL; 
-    q -> head = NULL; 
-    q -> size = 0;
-    q = NULL;
 }
 
 /*
